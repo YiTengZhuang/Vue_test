@@ -1,7 +1,10 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <!--對應到router裡的路徑-->
+    <router-link to="/"><img src="./assets/dog.jpg" height="100" width="100" v-if="t"></router-link>
+    <router-link to="/about" v-if="t" @click="hi">About|</router-link>
+    <router-link to="/echarts/pie" v-if="t">Test|</router-link>
+    <router-link to="/uploadimage" v-if="t">Upload</router-link>
   </nav>
   <router-view/>
 </template>
@@ -28,3 +31,18 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
+
+<script>
+export default{
+  data(){
+    return{
+      t: true
+    }
+  },
+  methods:{
+    hi(){
+      this.t = false
+    }
+  }
+}
+</script>
